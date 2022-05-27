@@ -1,0 +1,16 @@
+{
+  "name": "mibapp",
+  "version": "1.0.0",
+  "description": "Small app for Men in Black. The information about hidden non-humans is logged into configured file.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "test",
+    "MIBApp": "node application.js"
+  },
+  "author": "d.gorbachev",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "0.27.2"
+  }
+}
