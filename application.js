@@ -1,14 +1,15 @@
-import { printInfo } from './utils/printer.js';
-import { getInfo, getCharactersCount } from './utils/API.js';
-import { getRandomId } from './utils/random.js';
+import Printer from './utils/printer.js';
+import API from './utils/API.js';
+import Random from './utils/random.js';
 import { argv } from 'node:process';
-import { validate } from './utils/validator.js';
+import Validator from './utils/validator.js';
 
-
-async function myApplication() {
-    const id = argv[2] ? argv[2] : getRandomId(await getCharactersCount());
-    printInfo(validate(await getInfo(id)));
+export default class Application {
+    static async myApplication() {
+        //const api = new API();
+        const id = argv[2] ? argv[2] : Random.getRandomId(await API.getCharactersCount());
+        Printer.printInfo(Validator.validate(await API.getInfo(id)));
+    }
 }
 
-
-myApplication();
+Application.myApplication();

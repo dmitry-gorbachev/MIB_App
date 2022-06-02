@@ -1,18 +1,18 @@
-function now() {
-    const dateTime = new Date();
-    const year = dateTime.getFullYear();
-    let month = fullNum(dateTime.getMonth() + 1);
-    let day = fullNum(dateTime.getDate());
+export default class DateTime {
+    static now() {
+        const dateTime = new Date();
+        const year = dateTime.getFullYear();
+        let month = this.fullNum(dateTime.getMonth() + 1);
+        let day = this.fullNum(dateTime.getDate());
+        
+        let hours = this.fullNum(dateTime.getHours());
+        let minutes = this.fullNum(dateTime.getMinutes());
     
-    let hours = fullNum(dateTime.getHours());
-    let minutes = fullNum(dateTime.getMinutes());
-
-    return `${day}.${month}.${year} ${hours}:${minutes}`;
+        return `${day}.${month}.${year} ${hours}:${minutes}`;
+    }
+    
+    static fullNum(number) {
+        const decadeSize = 10;
+        return number < decadeSize ? `0${number}` : number;
+    }
 }
-
-function fullNum(number) {
-    const decadeSize = 10;
-    return number < decadeSize ? `0${number}` : number;
-}
-
-export { now }
