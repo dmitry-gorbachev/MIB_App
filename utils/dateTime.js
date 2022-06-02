@@ -11,7 +11,8 @@ function now() {
 }
 
 function fullNum(number) {
-    return number < 10 ? `0${number}` : number;
+    const decadeSize = 10;
+    return number < decadeSize ? `0${number}` : number;
 }
 
 export { now }

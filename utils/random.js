@@ -1,7 +1,4 @@
-import { getCharactersCount } from './API.js';
-
-async function getRandomId() {
-    const max = await getCharactersCount();
+function getRandomId(max) {
     return Math.floor(Math.random() * max);
 }
 
