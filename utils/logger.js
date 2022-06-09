@@ -1,11 +1,11 @@
 import fs from 'fs';
-import Config from '../config.js';
+import config from '../config.js';
 import DateTime from './dateTime.js';
 
 export default class Logger {
     static logHidden(id, race) {
-        if (!fs.existsSync(Config.logsDir)) {
-            fs.mkdir(Config.logsDir, err => {
+        if (!fs.existsSync(config.logsDir)) {
+            fs.mkdir(config.logsDir, err => {
                 if(err) {
                     console.error(err);
                 }
@@ -13,7 +13,7 @@ export default class Logger {
         }
     
         const string = `${DateTime.now()} : information about ${race} ${id} successfully hidden\n`;
-        fs.writeFile(`${Config.logsDir}/${Config.logFileName}`, string, { flag: 'a+' }, err => {
+        fs.writeFile(`${config.logsDir}/${config.logFileName}`, string, { flag: 'a+' }, err => {
             if (err) {
               console.error(err);
             }

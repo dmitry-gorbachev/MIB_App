@@ -10,4 +10,8 @@ export default class Printer {
             console.log(character);
         }
     }
+
+    static printError(message) {
+        console.log(`[Error] ${message}`);
+    }
 }
