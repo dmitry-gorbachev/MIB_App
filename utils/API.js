@@ -1,24 +1,19 @@
 import axios from 'axios';
-import { validate } from './validator.js';
-import config from '../config.json' assert {type: "json"};
+import config from '../config.js';
 
-async function getInfo(id) {
-    const resp = await axios.get(`${config.APIURL}/${id}`);
-    const character = {};
-    character['id'] = id;
-    character['Name'] = resp.data.name;
-    character['Status'] = resp.data.status;
-    character['Race'] = resp.data.species;
-    return character;
+export default class API {
+    static async getInfo(id) {
+        const resp = await axios.get(`${config.APIURL}/${id}`);
+        return {
+            id: id,
+            Name: resp.data.name,
+            Status: resp.data.status,
+            Race: resp.data.species
+        };
+    }
+    
+    static async getCharactersCount() {
+        const resp = await axios.get(config.APIURL);
+        return resp.data.info.count;
+    }
 }
-
-async function getCharacter(id) {
-    return validate(await getInfo(id));
-}
-
-async function getCharactersCount() {
-    const resp = await axios.get(config.APIURL);
-    return JSON.stringify(resp.data.info.count);
-}
-
-export { getCharacter, getCharactersCount };
